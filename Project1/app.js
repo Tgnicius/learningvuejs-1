@@ -11,11 +11,8 @@ new Vue({
         attack: function() {
             this.monsterHP -= 5;
             if (this.monsterHP <= 0) {
-                this.monsterHP = 0;
-                this.gameOn = false;
-                clearInterval(this.interval);
-                // CRIAR RESET METHOD
                 alert("You win!");
+                this.resetGame();
             }
         },
         special: function() {
@@ -25,6 +22,28 @@ new Vue({
             } else {
                 alert("not enough mana");
             }
+        },
+        heal: function() {
+            if (this.playerMana >= 35) {
+                this.playerHP += 20;
+                this.playerMana -= 35;
+            } else {
+                alert("not enough mana");
+            }
+        },
+        giveup: function() {
+            alert("You lose!");
+            this.resetGame();
+        },
+        resetGame: function() {
+            this.gameOn = false;
+
+            if (this.interval) clearInterval(this.interval);
+            this.interval = false;
+
+            this.playerHP = 100;
+            this.playerMana = 50;
+            this.monsterHP = 100;
         },
         startGame: function() {
             this.gameOn = true;
