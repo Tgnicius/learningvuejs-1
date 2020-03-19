@@ -51,7 +51,7 @@
     <section class="row log">
         <div class="small-12 columns">
             <ul>
-                <li v-for="action in actionLog" :class="{'player-turn':action.player, 'monster-turn':!action.player}">
+                <li v-for="action in filtrarMensagens" :class="{'player-turn':action.player, 'monster-turn':!action.player}">
                     {{ action.log }}, VALUE: {{ action.value }}, MANA PRICE: {{ action.price }}
                 </li>
             </ul>

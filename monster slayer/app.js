@@ -98,6 +98,14 @@ new Vue({
             }, 2000);
         }
     },
+    computed: {
+        filtrarMensagens: function() {
+            return this.actionLog.filter(function(action, index) {
+                return index<4;
+            })
+        }
+    }
+    ,
     watch: {
         playerMana: function() {
             if (this.playerMana < 50) {
